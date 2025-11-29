@@ -1,4 +1,4 @@
-# MasterThesis: Applications of Gaussian Processes in Modelling Biological Collectives
+# Applications of Gaussian Processes in Modelling Biological Collectives
 
 Combine formal verification with Gaussian Processes, a powerful Machine Learning approach, to develop a scalable, flexible, and data-efficient method in the analysis of biological collectives. We address the following research questions:
 
