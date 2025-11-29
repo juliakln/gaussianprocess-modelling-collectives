@@ -179,11 +179,11 @@ def simulate_bee_prism(paths):
 
     # simulate chain with Prism and save paths
     for p in p1:
-        result = "/Users/juliaklein/Documents/uni/MasterThesis/data/dtmc_1/case_" + str(p) + ".txt"
+        result = "../data/dtmc_1/case_" + str(p) + ".txt"
         resultfile = open(result ,"w")
         resultfile.close()
         resultfile = open(result, "r+")
-        prismcommand = "/Applications/prism-4.7-src/prism/bin/prism /Users/juliaklein/Documents/uni/MasterThesis/models/bee_3.pm /Users/juliaklein/Documents/uni/MasterThesis/models/bee_3_p.pctl -const p=" + str(p) + " -sim -simsamples " + str(paths) + " -exportresults " + result
+        prismcommand = "/Applications/prism-4.7-src/prism/bin/prism ../models/bee_3.pm ../models/bee_3_p.pctl -const p=" + str(p) + " -sim -simsamples " + str(paths) + " -exportresults " + result
         prismprocess = subprocess.check_call(prismcommand, stdin=None, stdout=None , stderr=None, shell=True)
         resultfile.close()
 
@@ -191,11 +191,11 @@ def simulate_bee_prism_pmc():
     p1 = np.linspace(0, 1, 100) 
     # simulate chain with Prism and save paths
     for p in p1:
-        result = "/Users/juliaklein/Documents/uni/MasterThesis/data/dtmc_1_pmc/case_" + str(p) + ".txt"
+        result = "../data/dtmc_1_pmc/case_" + str(p) + ".txt"
         resultfile = open(result ,"w")
         resultfile.close()
         resultfile = open(result, "r+")
-        prismcommand = "/Applications/prism-4.7-src/prism/bin/prism /Users/juliaklein/Documents/uni/MasterThesis/models/bee_3.pm /Users/juliaklein/Documents/uni/MasterThesis/models/bee_3_p.pctl -const p=" + str(p) + " -exportresults " + result
+        prismcommand = "/Applications/prism-4.7-src/prism/bin/prism ../models/bee_3.pm ../models/bee_3_p.pctl -const p=" + str(p) + " -exportresults " + result
         prismprocess = subprocess.check_call(prismcommand, stdin=None, stdout=None , stderr=None, shell=True)
         resultfile.close()
 
@@ -211,11 +211,11 @@ def simulate_bee_prism2(paths):
     for x in X:
         p1 = x[0]
         p2 = x[1]
-        result = "/Users/juliaklein/Documents/uni/MasterThesis/data/dtmc_2/case_" + str(round(p1,1)) + "_" + str(round(p2,2)) + ".txt"
+        result = "../data/dtmc_2/case_" + str(round(p1,1)) + "_" + str(round(p2,2)) + ".txt"
         resultfile = open(result ,"w")
         resultfile.close()
         resultfile = open(result, "r+")
-        prismcommand = "/Applications/prism-4.7-src/prism/bin/prism /Users/juliaklein/Documents/uni/MasterThesis/models/bee_3.pm /Users/juliaklein/Documents/uni/MasterThesis/models/bee_3_p.pctl -const p=" + str(p1) + ",q1=" + str(p2) + " -sim -simsamples " + str(paths) + " -exportresults " + result
+        prismcommand = "/Applications/prism-4.7-src/prism/bin/prism ../models/bee_3.pm ../models/bee_3_p.pctl -const p=" + str(p1) + ",q1=" + str(p2) + " -sim -simsamples " + str(paths) + " -exportresults " + result
         prismprocess = subprocess.check_call(prismcommand, stdin=None, stdout=None , stderr=None, shell=True)
         resultfile.close()
 
@@ -224,7 +224,7 @@ def read_bee_prism():
     # save number of satisfactions for each value of p and experiment
     satisfactions = defaultdict(list)
     # read outcomes for all parameter values and compute number of satisfactions
-    for dirpath, dirs, files in os.walk("/Users/juliaklein/Documents/uni/MasterThesis/data/dtmc_1"):
+    for dirpath, dirs, files in os.walk("../data/dtmc_1"):
         for file in files:
             if file.startswith("case"):
                 p = round(float((file.split("_")[1]).rsplit(".", 1)[0]), 4)
@@ -248,7 +248,7 @@ def read_bee_prism_pmc():
     # save probability of satisfactions for each population size and experiment
     pmc_satisfactions = defaultdict(list)
     # read outcomes for all population sizes and compute number of satisfactions
-    for dirpath, dirs, files in os.walk("/Users/juliaklein/Documents/uni/MasterThesis/data/dtmc_1_pmc"):
+    for dirpath, dirs, files in os.walk("../data/dtmc_1_pmc"):
         for file in files:
             if file.startswith("case"):
                 p = round(float((file.split("_")[1]).rsplit(".", 1)[0]), 4)
